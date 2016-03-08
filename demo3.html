@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/d3/3.5.12/d3.min.js"></script>
+  <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="css/dc.css" media="screen" title="no title" charset="utf-8">
+  <style media="screen">
+
+  </style>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var width = 500,
+      height = 500,
+      margin = 25,
+      axisWidth = width - 2 * margin;
+    var svg = d3.select("body").append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr("class", "axis");
+    var scale = d3.scale.linear()//线性比例尺
+      .domain([0, 100])
+      .range([0, axisWidth]);
+    var axis = d3.svg.axis()
+      .scale(scale)
+      .ticks(5)//控制坐标轴刻度数
+      .tickSubdivide(5)//每个刻度之间的最小刻度数
+      .tickPadding(10)//标签数字和坐标轴之间的距离
+      .tickFormat(function(v) {
+        return v + "%";
+      });
+    svg.append("g")
+      .attr("transform", function() {
+        return "translate(" + margin + "," + margin + ")";
+      })
+      .call(axis);
+  </script>
+
+</body>
+
+</html>
